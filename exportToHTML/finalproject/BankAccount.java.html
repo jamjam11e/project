@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>BankAccount.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #54b33e;}
+.s4 { color: #7ec3e6;}
+.s5 { color: #33ccff; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BankAccount.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">finalproject</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.util.Date</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.time.Duration</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.time.LocalDate</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.time.LocalDateTime</span><span class="s2">;</span>
+
+
+<span class="s0">public class </span><span class="s1">BankAccount {</span>
+    <span class="s0">private int </span><span class="s1">accountId</span><span class="s2">;</span>
+    <span class="s0">private int </span><span class="s1">pin</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">ArrayList&lt;Client&gt; holders</span><span class="s2">;</span>
+    <span class="s0">private double </span><span class="s1">balance</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">Date creationDate</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">Date lastInterestPaymentDate</span><span class="s2">;</span>
+    <span class="s0">private double </span><span class="s1">interestRate</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">BankAccount(</span><span class="s0">int </span><span class="s1">accountId</span><span class="s2">, </span><span class="s0">int </span><span class="s1">pin</span><span class="s2">, </span><span class="s0">double </span><span class="s1">initialBalance</span><span class="s2">, </span><span class="s0">double </span><span class="s1">interestRate) {</span>
+        <span class="s0">this</span><span class="s1">.accountId = accountId</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.pin = pin</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.balance = initialBalance</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.creationDate = </span><span class="s0">new </span><span class="s1">Date()</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.lastInterestPaymentDate = </span><span class="s0">new </span><span class="s1">Date()</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.interestRate = interestRate</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.holders = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getAccountId() {</span>
+        <span class="s0">return </span><span class="s1">accountId</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setAccountId(</span><span class="s0">int </span><span class="s1">accountId) {</span>
+        <span class="s0">this</span><span class="s1">.accountId = accountId</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getPin() {</span>
+        <span class="s0">return </span><span class="s1">pin</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setPin(</span><span class="s0">int </span><span class="s1">pin) {</span>
+        <span class="s0">this</span><span class="s1">.pin = pin</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">ArrayList&lt;Client&gt; getHolders() {</span>
+        <span class="s0">return </span><span class="s1">holders</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setHolders(ArrayList&lt;Client&gt; holders) {</span>
+        <span class="s0">this</span><span class="s1">.holders = holders</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public double </span><span class="s1">getBalance() {</span>
+        <span class="s0">return </span><span class="s1">balance</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setBalance(</span><span class="s0">double </span><span class="s1">balance) {</span>
+        <span class="s0">this</span><span class="s1">.balance = balance</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">Date getCreationDate() {</span>
+        <span class="s0">return </span><span class="s1">creationDate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setCreationDate(Date creationDate) {</span>
+        <span class="s0">this</span><span class="s1">.creationDate = creationDate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">Date getLastInterestPaymentDate() {</span>
+        <span class="s0">return </span><span class="s1">lastInterestPaymentDate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setLastInterestPaymentDate(Date lastInterestPaymentDate) {</span>
+        <span class="s0">this</span><span class="s1">.lastInterestPaymentDate = lastInterestPaymentDate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public double </span><span class="s1">getInterestRate() {</span>
+        <span class="s0">return </span><span class="s1">interestRate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setInterestRate(</span><span class="s0">double </span><span class="s1">interestRate) {</span>
+        <span class="s0">this</span><span class="s1">.interestRate = interestRate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">deposit(</span><span class="s0">double </span><span class="s1">amount) {</span>
+        <span class="s1">balance += amount</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">withdraw(</span><span class="s0">double </span><span class="s1">amount) {</span>
+        <span class="s0">if </span><span class="s1">(balance &gt;= amount) {</span>
+            <span class="s1">balance -= amount</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Insufficient funds&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">addHolder(Client holder) {</span>
+        <span class="s4">// Check if the holder is not already present in the holders list</span>
+        <span class="s0">if </span><span class="s1">(!holders.contains(holder)) {</span>
+            <span class="s4">// Add the holder to the list of holders</span>
+            <span class="s1">holders.add(holder)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Holder added: &quot; </span><span class="s1">+ holder.getFirstName() + </span><span class="s3">&quot; &quot; </span><span class="s1">+ holder.getLastName())</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Holder already exists.&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">payInterest() {</span>
+        <span class="s1">LocalDate currentDate = LocalDate.now()</span><span class="s2">;</span>
+        <span class="s1">LocalDateTime lastInterestDateTime = LocalDateTime.from(lastInterestPaymentDate.toInstant())</span><span class="s2">;</span>
+        <span class="s1">LocalDateTime currentDateTime = currentDate.atStartOfDay()</span><span class="s2">;</span>
+
+        <span class="s1">Duration duration = Duration.between(lastInterestDateTime</span><span class="s2">, </span><span class="s1">currentDateTime)</span><span class="s2">;</span>
+        <span class="s0">long </span><span class="s1">daysSinceLastInterest = duration.toDays()</span><span class="s2">;</span>
+
+        <span class="s0">if </span><span class="s1">(daysSinceLastInterest &gt; </span><span class="s5">0</span><span class="s1">) {</span>
+            <span class="s0">double </span><span class="s1">dailyInterestRate = interestRate / </span><span class="s5">365</span><span class="s2">; </span><span class="s4">// Assuming interest is calculated daily</span>
+            <span class="s0">double </span><span class="s1">interestEarned = balance * dailyInterestRate * daysSinceLastInterest</span><span class="s2">;</span>
+            <span class="s1">balance += interestEarned</span><span class="s2">;</span>
+            <span class="s1">lastInterestPaymentDate = </span><span class="s0">new </span><span class="s1">Date()</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Interest paid: &quot; </span><span class="s1">+ interestEarned)</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;No interest earned since last payment.&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
